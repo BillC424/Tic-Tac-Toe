@@ -6,18 +6,34 @@ class Player
   end
     
   class Board
+    attr_accessor :board_display
+    
     def initialize
       @board_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      @board_display = ' 1 | 2 | 3
+      @board_display = '
+                         1 | 2 | 3
                         ---+---+---
                          4 | 5 | 6
                         ---+---+---
-                         7 | 8 | 9 '
+                         7 | 8 | 9 '.chars
     end
   end
-    
+  
+  new_board = Board.new
+  
+  puts new_board.board_display
+  puts new_board.board_display.join
+  
+  new_board.board_display.map {|number| 
+    player_input = gets.chomp
+    if number == '1'..'9'
+     number.to_i
+    if number == 1..9 && number == player_input
+      number == player_input
+      }
+  
   #def game
-  #  each {||
+  #each {||
   #    { horizontal_one_thru_three: [1, 2, 3], 
   #      horizontal_four_thru_six: [4, 5, 6], 
   #      horizontal_seven_thru_nine:[7, 8, 9],
