@@ -1,7 +1,10 @@
 class Player
-    def initialize(name, game_marker)
+    attr_accessor :name, :player_symbol
+    
+    def initialize(name, player_symbol)
       @name = name
-      @game_marker = game_marker
+      @player_symbol = player_symbol
+      
     end
   end
     
@@ -21,11 +24,22 @@ class Player
   
   new_board = Board.new
   
-  new_board.board_display
+  ##Code for creating two players
+  puts "What is your the name of the first player?"
+  p1_name = gets.chomp
+  puts "Please choose X or O for your game marker"
+  p1_symbol = gets.chomp
+  p1 = Player.new(p1_name, p1_symbol)
   
-  player_symbol = gets.chomp
-  player_input = gets.chomp
-  p player_input
+  puts "What is your the name of the second player?"
+  p2_name = gets.chomp
+  puts "Please choose X or O for your game marker"
+  p2_symbol = gets.chomp
+  p2 = Player.new(p2_name, p2_symbol)
+  
+  
+  
+  
   bb = new_board.board_display.map do |number|
     if number == '1' && number == player_input
       number = player_symbol
