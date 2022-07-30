@@ -21,16 +21,38 @@ class Player
   
   new_board = Board.new
   
-  puts new_board.board_display
-  puts new_board.board_display.join
+  new_board.board_display
   
-  new_board.board_display.map {|number| 
-    player_input = gets.chomp
-    if number == '1'..'9'
-     number.to_i
-    if number == 1..9 && number == player_input
-      number == player_input
-      }
+  player_symbol = gets.chomp
+  player_input = gets.chomp
+  p player_input
+  bb = new_board.board_display.map do |number|
+    if number == '1' && number == player_input
+      number = player_symbol
+    elsif number == '2' && number == player_input
+      number = 'X'
+    elsif number == '3' && number == player_input
+      number = 'X'
+    elsif number == '4' && number == player_input
+      number = 'X'
+    elsif number == '5' && number == player_input
+      number = 'X'  
+    elsif number == '6' && number == player_input
+      number = 'X'
+    elsif number == '7' && number == player_input
+      number = 'X'
+    elsif number == '8' && number == player_input
+      number = 'X'  
+    elsif number == '9' && number == player_input
+      number = 'X'  
+    else  
+      number = number
+    end
+  end
+  
+  p bb
+  
+  puts bb.join
   
   #def game
   #each {||
