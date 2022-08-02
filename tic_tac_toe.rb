@@ -36,43 +36,42 @@ class Player
   p2_symbol = gets.chomp
   p2 = Player.new(p2_name, p2_symbol)
   
-  i = 0 
   
   puts new_board.board_display.join
-  i = 0 
   
-  while i <10
+  def play_round(board, player)
   puts "Choose a square for your turn"
   player_input = gets.chomp
   
-  new_board.board_display = new_board.board_display.map do |number|
+  board.board_display = board.board_display.map do |number|
     if number == '1' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '2' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '3' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '4' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '5' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '6' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '7' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '8' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     elsif number == '9' && number == player_input
-      number = p1.player_symbol
+      number = player.player_symbol
     else  
       number = number
     end
   end
   
-  puts new_board.board_display.join
+  puts board.board_display.join
   
   end
-  
+  play_round(new_board, p1)
+  play_round(new_board, p2)
   
   #def game
   #each {||
