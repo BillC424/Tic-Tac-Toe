@@ -1,9 +1,10 @@
 class Player
-    attr_accessor :name, :player_symbol
+    attr_accessor :name, :player_symbol, :numbers_chosen
     
     def initialize(name, player_symbol)
       @name = name
       @player_symbol = player_symbol
+      @numbers_chosen = []
       
     end
   end
@@ -45,22 +46,31 @@ class Player
   
   board.board_display = board.board_display.map do |number|
     if number == '1' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '2' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '3' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '4' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '5' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '6' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '7' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '8' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     elsif number == '9' && number == player_input
+      player.numbers_chosen = player.numbers_chosen.push(number)
       number = player.player_symbol
     else  
       number = number
@@ -68,8 +78,14 @@ class Player
   end
   
   puts board.board_display.join
+  p player.numbers_chosen
   
   end
+  
+  
+  
+  play_round(new_board, p1)
+  play_round(new_board, p2)
   play_round(new_board, p1)
   play_round(new_board, p2)
   
