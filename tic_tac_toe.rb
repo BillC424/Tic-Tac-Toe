@@ -82,12 +82,13 @@ class Player
   
   end
   
-  
-  
-  play_round(new_board, p1)
-  play_round(new_board, p2)
-  play_round(new_board, p1)
-  play_round(new_board, p2)
+  i = 0
+
+  while i < 5
+    play_round(new_board, p1)
+    play_round(new_board, p2)
+  end  
+
   
   #def game
   #each {||
