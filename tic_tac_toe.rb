@@ -48,60 +48,65 @@ class Player
   puts new_board.board_display.join
   
   def play_round(board, player)
-  puts "Choose a square for your turn"
-  player_input = gets.chomp
+    puts "Choose a square for your turn"
+    player_input = gets.chomp
   
-  board.board_display = board.board_display.map do |number|
-    if number == '1' && number == player_input
-      player.numbers_chosen[:horizontal_123] << number
-      player.numbers_chosen[:vertical_147] << number
-      player.numbers_chosen[:diagonal_159] << number
-      number = player.player_symbol
-    elsif number == '2' && number == player_input
-      player.numbers_chosen[:horizontal_123] << number
-      player.numbers_chosen[:vertical_258] << number
-      number = player.player_symbol
-    elsif number == '3' && number == player_input
-      player.numbers_chosen[:horizontal_123] << number
-      player.numbers_chosen[:vertical_369] << number
-      player.numbers_chosen[:diagonal_357] << number
-      number = player.player_symbol
-    elsif number == '4' && number == player_input
-      player.numbers_chosen[:horizontal_456] << number
-      player.numbers_chosen[:vertical_147] << number
-      number = player.player_symbol
-    elsif number == '5' && number == player_input
-      player.numbers_chosen[:horizontal_456] << number
-      player.numbers_chosen[:vertical_258] << number
-      player.numbers_chosen[:diagonal_159] << number
-      player.numbers_chosen[:diagonal_357] << number
-      number = player.player_symbol
-    elsif number == '6' && number == player_input
-      player.numbers_chosen[:horizontal_456] << number
-      player.numbers_chosen[:vertical_369] << number
-      number = player.player_symbol
-    elsif number == '7' && number == player_input
-      player.numbers_chosen[:horizontal_789] << number
-      player.numbers_chosen[:vertical_147] << number
-      player.numbers_chosen[:diagonal_357] << number
-      number = player.player_symbol
-    elsif number == '8' && number == player_input
-      player.numbers_chosen[:horizontal_789] << number
-      player.numbers_chosen[:vertical_258] << number
-      number = player.player_symbol
-    elsif number == '9' && number == player_input
-      player.numbers_chosen[:horizontal_789] << number
-      player.numbers_chosen[:vertical_369] << number
-      player.numbers_chosen[:diagonal_159] << number
-      number = player.player_symbol
-    else  
-      number = number
-    end
+    board.board_display = board.board_display.map do |number|
+      if number == '1' && number == player_input
+        player.numbers_chosen[:horizontal_123] << number
+        player.numbers_chosen[:vertical_147] << number
+        player.numbers_chosen[:diagonal_159] << number
+        number = player.player_symbol
+      elsif number == '2' && number == player_input
+        player.numbers_chosen[:horizontal_123] << number
+        player.numbers_chosen[:vertical_258] << number
+        number = player.player_symbol
+      elsif number == '3' && number == player_input
+        player.numbers_chosen[:horizontal_123] << number
+        player.numbers_chosen[:vertical_369] << number
+        player.numbers_chosen[:diagonal_357] << number
+        number = player.player_symbol
+      elsif number == '4' && number == player_input
+        player.numbers_chosen[:horizontal_456] << number
+        player.numbers_chosen[:vertical_147] << number
+        number = player.player_symbol
+      elsif number == '5' && number == player_input
+        player.numbers_chosen[:horizontal_456] << number
+        player.numbers_chosen[:vertical_258] << number
+        player.numbers_chosen[:diagonal_159] << number
+        player.numbers_chosen[:diagonal_357] << number
+        number = player.player_symbol
+      elsif number == '6' && number == player_input
+        player.numbers_chosen[:horizontal_456] << number
+        player.numbers_chosen[:vertical_369] << number
+        number = player.player_symbol
+      elsif number == '7' && number == player_input
+        player.numbers_chosen[:horizontal_789] << number
+        player.numbers_chosen[:vertical_147] << number
+        player.numbers_chosen[:diagonal_357] << number
+        number = player.player_symbol
+      elsif number == '8' && number == player_input
+        player.numbers_chosen[:horizontal_789] << number
+        player.numbers_chosen[:vertical_258] << number
+        number = player.player_symbol
+      elsif number == '9' && number == player_input
+        player.numbers_chosen[:horizontal_789] << number
+        player.numbers_chosen[:vertical_369] << number
+        player.numbers_chosen[:diagonal_159] << number
+        number = player.player_symbol
+      else  
+        number = number
+      end
   end
-  
+
+
   puts board.board_display.join
-  p player.numbers_chosen
-  
+    
+  player.numbers_chosen.each do |key, value| 
+    if value.length == 3
+      puts "#{player.name} wins!"
+    end  
+  end  
 end
   
 i = 0
@@ -117,18 +122,3 @@ while i < 5 do
   i += 1  
   end  
 end  
-
-  
-  #def game
-  #each {||
-  #    { horizontal_1-3: [1, 2, 3], 
-  #      horizontal_four_thru_six: [4, 5, 6], 
-  #      horizontal_seven_thru_nine:[7, 8, 9],
-  #      vertical_one_thru_seven: [1, 4, 7], 
-  #      vertical_two_thru_eight: [2, 5 , 8], 
-  #      vertical_three_thru_nine: [3, 6, 9],
-  #      diagonal_one_thru_nine: [1, 5, 9], 
-  #      diagonal_three_thru_seven:[3, 5, 7]
-  #    } 
-  # }  
-  #end
