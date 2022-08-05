@@ -86,6 +86,7 @@ class Board
       if value.length == 3
         puts "#{player.name} wins!"
         @game = 'won'
+        puts board.board_display.join
       end  
     end
   end  
@@ -95,6 +96,7 @@ class Board
       if number == 4 
         play_round(board, p1)
         break if @game == 'won'
+        puts board.board_display.join
         puts "All the spots have been chosen and no one won."
       else  
         play_round(board, p1)
@@ -125,5 +127,3 @@ p2 = Player.new(p2_name, p2_symbol)
 # Loop for playing game
 
 new_board.play_game(new_board, p1, p2)
-
-
