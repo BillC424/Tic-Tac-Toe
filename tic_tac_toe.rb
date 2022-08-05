@@ -84,9 +84,9 @@ class Board
     end
     player.numbers_chosen.each do |key, value| 
       if value.length == 3
+        puts board.board_display.join
         puts "#{player.name} wins!"
         @game = 'won'
-        puts board.board_display.join
       end  
     end
   end  
