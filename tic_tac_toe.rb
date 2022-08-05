@@ -14,43 +14,27 @@ class Player
         diagonal_159: [], 
         diagonal_357:[]}
     end
-  end
+end
     
-  class Board
-    attr_accessor :board_display
+class Board
+  attr_accessor :board_display
     
-    def initialize
-      @board_display = '
-                         1 | 2 | 3
-                        ---+---+---
-                         4 | 5 | 6
-                        ---+---+---
-                         7 | 8 | 9 '.chars
-    end
+  def initialize
+    @board_display = '
+                      1 | 2 | 3
+                     ---+---+---
+                      4 | 5 | 6
+                     ---+---+---
+                      7 | 8 | 9 '.chars
+    @game = ''
   end
-  #Creates game board
-  new_board = Board.new
-  
-  #Creates two players
-  puts "What is your the name of the first player?"
-  p1_name = gets.chomp
-  puts "Please choose X or O for your game marker"
-  p1_symbol = gets.chomp
-  p1 = Player.new(p1_name, p1_symbol)
-  
-  puts "What is your the name of the second player?"
-  p2_name = gets.chomp
-  puts "Please choose X or O for your game marker"
-  p2_symbol = gets.chomp
-  p2 = Player.new(p2_name, p2_symbol)
-  
-  
-  puts new_board.board_display.join
-  
+
   def play_round(board, player)
+    puts board.board_display.join
+    
     puts "Choose a square for your turn"
     player_input = gets.chomp
-  
+    
     board.board_display = board.board_display.map do |number|
       if number == '1' && number == player_input
         player.numbers_chosen[:horizontal_123] << number
@@ -97,28 +81,49 @@ class Player
       else  
         number = number
       end
-  end
-
-
-  puts board.board_display.join
-    
-  player.numbers_chosen.each do |key, value| 
-    if value.length == 3
-      puts "#{player.name} wins!"
-    end  
+    end
+    player.numbers_chosen.each do |key, value| 
+      if value.length == 3
+        puts "#{player.name} wins!"
+        @game = 'won'
+      end  
+    end
   end  
-end
-  
-i = 0
 
-while i < 5 do
-  if i == 4 
-    play_round(new_board, p1)
-    i +=1
-    puts "All the spots have been chosen and no one won."
-  else  
-  play_round(new_board, p1)
-  play_round(new_board, p2)
-  i += 1  
+  def play_game(board, p1, p2)
+    5.times do |number|
+      if number == 4 
+        play_round(board, p1)
+        break if @game == 'won'
+        puts "All the spots have been chosen and no one won."
+      else  
+        play_round(board, p1)
+        break if @game == 'won'
+        play_round(board, p2)
+        break if @game == 'won' 
+      end
+    end
   end  
 end  
+
+#Creates game board
+new_board = Board.new
+  
+#Creates two players
+puts "What is your the name of the first player?"
+p1_name = gets.chomp
+puts "Please choose X or O for your game marker"
+p1_symbol = gets.chomp
+p1 = Player.new(p1_name, p1_symbol)
+  
+puts "What is your the name of the second player?"
+p2_name = gets.chomp
+puts "Please choose X or O for your game marker"
+p2_symbol = gets.chomp
+p2 = Player.new(p2_name, p2_symbol)
+
+# Loop for playing game
+
+new_board.play_game(new_board, p1, p2)
+
+
